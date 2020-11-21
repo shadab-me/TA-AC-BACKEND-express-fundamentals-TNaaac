@@ -1,20 +1,25 @@
 let express = require('express');
+const morgan = require('morgan');
 let app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.use(express.static(__dirname + '/assets'))
-app.get('/home', (req, res) => {
-    console.log(__dirname);
 
+ 
+
+app.use(express.static(__dirname + '/public'))
+
+
+app.get('/', (req, res) => {
+    console.log(__dirname);
     res.sendFile(__dirname + '/index.html')
     
 })
 
  
 
-app.get('/', (req, res) => {
+app.get('/wel', (req, res) => {
     res.send('Welcome to express');
 });
 
