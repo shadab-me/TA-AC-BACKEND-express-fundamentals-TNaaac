@@ -2,16 +2,16 @@ let express = require('express');
 
 let app = express();
 
-app.get('/', (req, res) => {
-     res.sendFile(__dirname + '/index.html');
-})
-app.get('/login', (req, res) => {
-res.sendFile(__dirname + '/newform.html')
-});
+app.use(express.urlencoded({extended: false}))
+app.use(express.json());
 
-app.post('/login',(req, res) => {
-console.log(req.body);
-res.send('This from form')
+app.get('/', (req, res) => {
+     res.sendFile(__dirname + '/newform.html')
+});
+ 
+
+app.post('/user',(req, res) => {
+     res.json(req.body)
 });
 
 
